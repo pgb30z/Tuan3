@@ -4,40 +4,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bai2</title>
+    <title>Bai 02</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         #container {
             display: grid;
-            grid-template-areas: "header header""left right""footer footer";
+            grid-template-areas: "header-left header-right header-right" "content-left content-left content-right" "footer footer footer";
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        /* Header left */
+        
+        #header-left {
+            grid-area: header-left;
+            background-color: #294E79;
         }
         
-        #header {
-            grid-area: header;
-            background-color: rgba(14, 40, 187, 0.884);
+        .logo {
+            display: flex;
+            align-items: center;
         }
         
-        #left {
-            grid-area: left;
+        .header__logo {
+            width: 100px;
         }
         
-        #right {
-            grid-area: right;
+        .header__logo-description {
+            color: #fff;
+        }
+        /* header right */
+        
+        .header-right {
+            grid-area: header-right;
+            background-color: #294E79;
+            position: relative;
+        }
+        
+        .form {
+            gap: 20px;
+            display: flex;
+            justify-content: flex-end;
+            height: 30px;
+            margin: 20px;
+        }
+        
+        .nav__search {
+            border: 2px solid #497EBF;
+            background-color: rgba(28, 52, 81, 0.8);
+        }
+        
+        input::placeholder {
+            color: #fff;
+        }
+        
+        input[type="submit"] {
+            color: #fff;
+        }
+        
+        .nav__submit {
+            cursor: pointer;
+            padding: 4px;
+            border: 2px solid #497EBF;
+            background-color: rgba(28, 52, 81, 0.8);
+        }
+        
+        .nav_btn {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .nav_btn li {
+            padding: 12px;
+            background-color: #497EBF;
+            margin-right: 8px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+        }
+        /* content-left */
+        
+        #content-left {
+            grid-area: content-left;
+            padding: 20px;
+            background: #fff;
+        }
+        
+        .content-left__main {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .content-left__main-des {
+            flex: 2;
+        }
+        
+        .content-left__main-info {
+            flex: 1;
+        }
+        
+        .content-heading {
+            font-size: 20px;
+            font-weight: 400;
+            color: #63606A;
+            padding: 6px;
+        }
+        
+        .content-heading+hr {
+            border: none;
+            border-top: 2px dashed #999;
+            margin-bottom: 12px;
+        }
+        
+        .content-intro {
+            color: #b00;
+            text-shadow: 1px 1px 3px #7f7;
+            margin-bottom: 16px;
+        }
+        
+        .contact-form .form-row {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 45%;
+            /* chiem khoang 45% hang*/
+        }
+        
+        .contact-form .form-row.full-width {
+            flex: 1 1 100%;
+            /* chiem full chieu ngang */
+        }
+        
+        .contact-form label {
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+        
+        .contact-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            flex: 1 1 100%;
+            margin-top: 10px;
+        }
+        
+        .form-actions input {
+            padding: 6px 14px;
+            margin-right: 10px;
+            border: 1px solid #aaa;
+            background: #f7f7f7;
+            cursor: pointer;
+            color: #000;
+        }
+        
+        .form-actions input:hover {
+            background: #ddd;
+        }
+        
+        .content-left__main-info-heading {
+            font-size: 20px;
+            font-weight: 400;
+            color: #63606A;
+            padding: 6px;
+        }
+        
+        .content-left__main-info hr {
+            border: none;
+            border-top: 2px dashed #999;
+            margin-bottom: 12px;
+        }
+        
+        .content-left__main-info--part1,
+        .content-left__main-info--part2,
+        .content-left__main-info--part3 {
+            margin-bottom: 50px;
+        }
+        
+        #content-right {
+            grid-area: content-right;
+            background-color: #fff;
+        }
+        
+        .box__content {
+            background-color: #f7f7f7;
+            padding: 20px;
+            margin: 20px 10px 0 0;
+        }
+        
+        .heading hr {
+            border: none;
+            border-top: 2px dashed #999;
+            margin-bottom: 12px;
+        }
+        
+        .box__content img {
+            margin-bottom: 30px;
         }
         
         #footer {
             grid-area: footer;
+            background-color: #294E79;
+            padding: 10px;
+        }
+        
+        #footer p {
+            color: #fff;
         }
     </style>
-
 </head>
 
 <body>
     <div id="container">
-        <div id="header">header</div>
-        <div id="left">left content</div>
-        <div id="right">right content</div>
-        <div id="footer">footer</div>
-
+        <div id="header-left">
+            <div class="logo"><img src="flower.png" alt="" class="header__logo">
+                <div class="header__logo-text">
+                    <h1 style="color: #fff;">FlowerBox360</h1><span class="header__logo-description">...to get your daily close of luxury roses!</span></div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="form"><input type="text" class="nav__search" placeholder="Search the site..."><input type="submit" class="nav__submit" value="GO"></div>
+            <div class="nav">
+                <ul class="nav_btn">
+                    <li>Home</li>
+                    <li>Promotion</li>
+                    <li>Gift Baskets</li>
+                    <li>Flowers Services</li>
+                    <li>About</li>
+                </ul>
+            </div>
+        </div>
+        <div id="content-left">
+            <div class="content-left__main">
+                <div class="content-left__main-des">
+                    <h2 class="content-heading">Why Not Contact Us Today!</h2>
+                    <hr>
+                    <p class="content-intro"><em>For FlowerBox 360 shoppers,
+        that means not only can you send your friends and loved ones the highest quality flowers found online,
+        but that you can do so at a great value. </em></p>
+                    <form class="contact-form">
+                        <div class="form-row"><label for="name">Name:</label><input type="text" id="name" name="name"></div>
+                        <div class="form-row"><label for="email">Email:</label><input type="email" id="email" name="email"></div>
+                        <div class="form-row"><label for="telephone">Telephone:</label><input type="text" id="telephone" name="telephone"></div>
+                        <div class="form-row"><label for="subject">Subject:</label><input type="text" id="subject" name="subject"></div>
+                        <div class="form-row full-width"><label for="message">Message:</label><textarea id="message" name="message"></textarea></div>
+                        <div class="form-actions"><input type="submit" value="Submit"><input type="reset" value="Reset"></div>
+                    </form>
+                </div>
+                <div class="content-left__main-info">
+                    <h2 class="content-left__main-info-heading">FlowerBox 360 Info!
+                        <hr>
+                    </h2>
+                    <p class="content-left__main-info--part1">Openationg Hours: <br>Monday-Friday:9:000am-5:00pm <br>Saturday:9:00am-1.00pm. <br>Sunday:CLosed (No Deliveries)<br>ORDER ONLINE 24/7<br></p>
+                    <p class="content-left__main-info--part2">Software Engineering Dept. <br>Information Technology Faculty <br>First Floor, H Building <br></p>
+                    <p class="content-left__main-info--part3">12 Nguyen Van Bao, Ward 4,
+                        <br>Go Vap District, Ho Chi Minh City <br>Tel: 0283.8940 390 <br>Fax: 0283.9940 954<br></p>
+                </div>
+            </div>
+        </div>
+        <div id="content-right">
+            <div class="box__content">
+                <h2 class="heading">Discount & Specials
+                    <hr>
+                </h2><img src="rose.png" alt="" class="image"><span class="sub_image">FlowerBox 360 offers many great discounts throught the year,
+        from coupons and coupon codes,
+        to promo codes and other savings. We also offer military flower discounts to our wonderfull troppps! Read more </span></div>
+        </div>
+        <div id="footer">
+            <p>Copyright © 2017 - All Rights Reserved - Software Engineering Department - Industrial University of Ho Chi Minh City</p>
+        </div>
     </div>
 </body>
 
